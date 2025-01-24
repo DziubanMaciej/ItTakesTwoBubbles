@@ -1,9 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://ohk7l4y4iuct"]
+[gd_scene load_steps=5 format=4 uid="uid://ohk7l4y4iuct"]
 
 [ext_resource type="PackedScene" uid="uid://bapmn72w0f62v" path="res://characters/player.tscn" id="1_lr5wh"]
+[ext_resource type="Texture2D" uid="uid://c2cs11157mbsn" path="res://img/bg.png" id="2_ey4w8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2sjn"]
+texture = ExtResource("2_ey4w8")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ffjww"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_e2sjn")
 
 [node name="Root" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_lr5wh")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_ffjww")
+format = 2
+
+[node name="Layer0" type="TileMapLayer" parent="TileMap"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD6/wEAAQAAAAAAAAD7/wEAAQAAAAAAAAD8/wEAAQAAAAAAAAD9/wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_ffjww")
