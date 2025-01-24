@@ -18,32 +18,33 @@ var action_shoot = str(player, "_shoot")
 var jump_held = false
 
 func _process(delta: float) -> void:
-	# Handle shooting projectiles
-	if Input.is_action_just_pressed(action_shoot):
-		var projectile = scene_projectile.instantiate()
-		projectile_container.add_child(projectile)
-		projectile.global_position = $Emitter.global_position
+    # Handle shooting projectiles
+    if Input.is_action_just_pressed(action_shoot):
+        var projectile = scene_projectile.instantiate()
+        projectile_container.add_child(projectile)
+        projectile.global_position = $Emitter.global_position
+        projectile.set_direction_right()
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+    # Add the gravity.
+    if not is_on_floor():
+        velocity += get_gravity() * delta
 
-	# Handle jumping
-	if Input.is_action_pressed(action_jump):
-		jump_held = true
-	else:
-		jump_held = false
+    # Handle jumping
+    if Input.is_action_pressed(action_jump):
+        jump_held = true
+    else:
+        jump_held = false
 
-	# Jump when on the floor and the jump button is held
-	if is_on_floor() and jump_held:
-		velocity.y = JUMP_VELOCITY
+    # Jump when on the floor and the jump button is held
+    if is_on_floor() and jump_held:
+        velocity.y = JUMP_VELOCITY
 
-	# Handle horizontal movement
-	var direction := Input.get_axis(action_left, action_right)
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+    # Handle horizontal movement
+    var direction := Input.get_axis(action_left, action_right)
+    if direction:
+        velocity.x = direction * SPEED
+    else:
+        velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	move_and_slide()
+    move_and_slide()
