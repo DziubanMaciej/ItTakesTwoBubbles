@@ -60,8 +60,7 @@ texture = ExtResource("4_u8lsb")
 
 [node name="ProjectileContainer" type="Node2D" parent="."]
 
-[node name="Player" parent="." node_paths=PackedStringArray("projectile_container") instance=ExtResource("1_lr5wh")]
-projectile_container = NodePath("../ProjectileContainer")
+[node name="Player" parent="." instance=ExtResource("1_lr5wh")]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")

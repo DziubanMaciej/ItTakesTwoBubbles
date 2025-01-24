@@ -3,7 +3,7 @@ extends Node2D
 @onready var sprite = $Sprite2D
 
 var direction = Vector2(1, 0)
-var move_speed = 4
+var move_speed = 20
 
 func set_direction_right():
     direction.x = 1

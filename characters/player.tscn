@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bapmn72w0f62v"]
+[gd_scene load_steps=4 format=3 uid="uid://bapmn72w0f62v"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_a45wv"]
 [ext_resource type="Texture2D" uid="uid://4j3x0cmoopc6" path="res://img/player.png" id="1_nr0l5"]
+[ext_resource type="PackedScene" uid="uid://bc35mh3cchynq" path="res://objects/gun.tscn" id="3_tg4wh"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_a45wv")
@@ -18,3 +19,6 @@ polygon = PackedVector2Array(-52, -442, -52, -422, -92, -422, -92, -402, -112, -
 
 [node name="Emitter" type="Node2D" parent="."]
 position = Vector2(25.035, -80)
+
+[node name="gun" parent="." instance=ExtResource("3_tg4wh")]
+position = Vector2(-15, -80)
