@@ -28,3 +28,10 @@ func _ready() -> void:
             $Root/Sprite2D.frame = 21
         Model.Model2:
             $Root/Sprite2D.frame = 18
+
+func take_damage(amount: int) -> void:
+    # TODO enemy health
+    die()
+
+func die():
+    queue_free()
