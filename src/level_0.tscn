@@ -83,7 +83,7 @@ tile_set = SubResource("TileSet_ffjww")
 
 [node name="Enemy" parent="." instance=ExtResource("7_lgagm")]
 position = Vector2(319, 178)
-shoot_type = 1
+shoot_type = 2
 ai_type = 1
 model = 1
 
