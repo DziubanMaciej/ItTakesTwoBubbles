@@ -33,3 +33,7 @@ func start_level():
     LevelGlobals.players.clear()
     LevelGlobals.players.push_back(current_level.get_node("Player0"))
     LevelGlobals.players.push_back(current_level.get_node("Player1"))
+
+func _process(delta: float) -> void:
+    if Input.is_action_just_pressed("reset_level"):
+        start_level()
