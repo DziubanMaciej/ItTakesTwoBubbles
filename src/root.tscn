@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ohk7l4y4iuct"]
 
 [ext_resource type="Script" path="res://src/root.gd" id="1_k6dmd"]
-[ext_resource type="Texture2D" uid="uid://eod8w3wxoilg" path="res://img/sky.png" id="2_6ncvs"]
+[ext_resource type="Texture2D" uid="uid://jhmwsl72hrsi" path="res://img/Tile_bg.png" id="2_rkh7e"]
 [ext_resource type="Texture2D" uid="uid://ohw4f1s6kliy" path="res://img/ground.png" id="3_qnm42"]
 [ext_resource type="Texture2D" uid="uid://bmon4t7gprfel" path="res://img/clouds_1.png" id="4_5o48m"]
 [ext_resource type="Texture2D" uid="uid://dg8fkxllnm6xl" path="res://img/clouds_2.png" id="5_bdln1"]
@@ -12,36 +12,37 @@ script = ExtResource("1_k6dmd")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="SkyParalaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="LayerTiles" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 3
 motion_mirroring = Vector2(1140, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SkyParalaxLayer"]
-position = Vector2(575, 325)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_6ncvs")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/LayerTiles"]
+position = Vector2(601, 326.9)
+scale = Vector2(0.29679, 0.316504)
+texture = ExtResource("2_rkh7e")
 
-[node name="GroundParalaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="LayerGround" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(1140, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/GroundParalaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/LayerGround"]
 position = Vector2(578.667, 326)
 scale = Vector2(0.603704, 0.603704)
 texture = ExtResource("3_qnm42")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="LayerCloud1" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.6, 0.6)
 motion_mirroring = Vector2(1140, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/LayerCloud1"]
 position = Vector2(576, 324.5)
 scale = Vector2(0.593518, 0.593518)
 texture = ExtResource("4_5o48m")
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="LayerCloud2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1140, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/LayerCloud2"]
 position = Vector2(362.667, 204)
 scale = Vector2(0.372222, 0.372222)
 texture = ExtResource("5_bdln1")
