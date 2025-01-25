@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var muzzle: Marker2D = $Marker2D
-@onready var scene_projectile = preload("res://objects/projectile.tscn")
+@onready var scene_projectile = preload("res://src/projectile.tscn")
 
 @export var projectile_container: Node2D
 @export var player = "player0"

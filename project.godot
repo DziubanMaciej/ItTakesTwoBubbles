@@ -15,13 +15,13 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="ItTakesTwoBubbles"
-run/main_scene="res://levels/level_0.tscn"
+run/main_scene="res://src/level_0.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-LevelGlobals="*res://levels/level_globals.gd"
+LevelGlobals="*res://src/level_globals.gd"
 
 [display]
 

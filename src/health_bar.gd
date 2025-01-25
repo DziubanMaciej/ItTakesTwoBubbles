@@ -2,7 +2,7 @@ extends HBoxContainer
 
 @export var max_health: int = 5
 @export var current_health: int = 5
-@onready var bubble_image = preload("res://objects/buble_16.png")
+@onready var bubble_image = preload("res://img/buble_16.png")
 
 func _ready() -> void:
     update_health_bar()

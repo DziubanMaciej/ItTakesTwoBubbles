@@ -9,7 +9,7 @@ enum Type {
 @export var max_timeout : float = 1
 @export var type := Type.Horizontal
 
-@onready var scene_projectile = preload("res://objects/projectile.tscn")
+@onready var scene_projectile = preload("res://src/projectile.tscn")
 
 var rng = RandomNumberGenerator.new()
 
