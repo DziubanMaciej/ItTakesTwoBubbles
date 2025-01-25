@@ -1,19 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bapmn72w0f62v"]
+[gd_scene load_steps=5 format=3 uid="uid://bapmn72w0f62v"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_a45wv"]
 [ext_resource type="Texture2D" uid="uid://4j3x0cmoopc6" path="res://img/player.png" id="1_nr0l5"]
-[ext_resource type="PackedScene" path="res://objects/gun.tscn" id="3_tg4wh"]
+[ext_resource type="PackedScene" uid="uid://c8fbenmi0djt0" path="res://objects/health_bar.tscn" id="2_mftkb"]
+[ext_resource type="PackedScene" uid="uid://bc35mh3cchynq" path="res://objects/gun.tscn" id="3_tg4wh"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_a45wv")
 
-[node name="HealthBar" type="HBoxContainer" parent="."]
-offset_left = -54.0
-offset_top = -192.0
-offset_right = -33.0
-offset_bottom = -171.0
+[node name="HealthBar" parent="." instance=ExtResource("2_mftkb")]
+offset_left = -48.0
+offset_top = -212.0
+offset_right = -8.0
+offset_bottom = -172.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -100)

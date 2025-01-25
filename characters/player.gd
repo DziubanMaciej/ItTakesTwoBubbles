@@ -7,7 +7,6 @@ const HEAL_DELAY = 15.0
 # Projectile container is a parent node for each projectile. We need it to be
 # relative to world, not the player.
 
-@onready var bubble_image = preload("res://objects/buble_16.png")
 @onready var health_bar = $HealthBar
 @onready var heal_timer = Timer.new()
 @export var player = "player0"
@@ -19,56 +18,38 @@ var action_shoot = str(player, "_shoot")
 
 # Flag to track if the jump button is being held
 var jump_held = false
-var max_health = DEFAULT_MAX_HEALTH
-var current_health = DEFAULT_MAX_HEALTH
 
 func _ready() -> void:
-    update_health_bar()
+    health_bar.update_health_bar()
     add_child(heal_timer)  # Add the timer to the scene
     heal_timer.wait_time = HEAL_DELAY
     heal_timer.one_shot = false
     heal_timer.connect("timeout", Callable(self, "_on_heal_timer_timeout"))
     heal_timer.start()
-
-func update_health_bar() -> void:
-    # add/remove health based on max health
-    while health_bar.get_child_count() < max_health:
-        var bubble = TextureRect.new()
-        bubble.texture = bubble_image
-        bubble.visible = true
-        health_bar.add_child(bubble)
-
-    while health_bar.get_child_count() > max_health:
-        health_bar.get_child(health_bar.get_child_count() - 1).queue_free()
-
-    # Update visibility of bubles
-    for i in range(max_health):
-        health_bar.get_child(i).visible = i < current_health
+    health_bar.max_health = 8
+    health_bar.current_health = 8
 
 func take_damage(amount: int) -> void:
-    current_health -= amount
-    current_health = clamp(current_health, 0, max_health)
-    update_health_bar()
+    health_bar.take_damage(amount)
     heal_timer.start()
 
-    if current_health == 0:
+    if health_bar.current_health == 0:
         die()
 
 func _on_heal_timer_timeout() -> void:
     # Heal the player by 1 health point if not at max health
-    if current_health < max_health:
+    if health_bar.current_health < health_bar.max_health:
         heal(1)
         print("Player healed by 1!")
 
 func heal(amount: int) -> void:
-    current_health += amount
-    current_health = clamp(current_health, 0, max_health)
-    update_health_bar()
+    health_bar.heal(amount)
+    health_bar.update_health_bar()
 
 func increase_max_health(amount: int) -> void:
-    max_health += amount
-    current_health = max_health
-    update_health_bar()
+    health_bar.max_health += amount
+    health_bar.current_health = health_bar.max_health
+    health_bar.update_health_bar()
 
 func die() -> void:
     print("Player died!")
