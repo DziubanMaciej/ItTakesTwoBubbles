@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -550.0
+const FORCE_DOWN_VELOCITY = 890.0
 const DEFAULT_MAX_HEALTH = 5
 const HEAL_DELAY = 15.0
 
@@ -12,6 +13,7 @@ const HEAL_DELAY = 15.0
 @onready var action_left = str("player", player_index, "_left")
 @onready var action_right = str("player", player_index, "_right")
 @onready var action_jump = str("player", player_index, "_jump")
+@onready var action_down = str("player", player_index, "_down")
 @onready var action_fire = str("player", player_index, "_fire")
 
 # Flag to track if the jump button is being held
@@ -60,9 +62,6 @@ func die() -> void:
 
     LevelGlobals.root.start_level()
 
-func _process(_delta: float) -> void:
-    pass
-
 func _physics_process(delta: float) -> void:
     # Add the gravity.
     if not is_on_floor():
@@ -77,6 +76,9 @@ func _physics_process(delta: float) -> void:
     # Jump when on the floor and the jump button is held
     if is_on_floor() and jump_held:
         velocity.y = JUMP_VELOCITY
+
+    if not is_on_floor() and Input.is_action_pressed(action_down):
+        velocity.y = FORCE_DOWN_VELOCITY
 
     # Handle horizontal movement
     var direction := Input.get_axis(action_left, action_right)
