@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_a45wv"]
 [ext_resource type="Texture2D" uid="uid://4j3x0cmoopc6" path="res://img/player.png" id="1_nr0l5"]
-[ext_resource type="PackedScene" uid="uid://bc35mh3cchynq" path="res://objects/gun.tscn" id="3_tg4wh"]
+[ext_resource type="PackedScene" path="res://objects/gun.tscn" id="3_tg4wh"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2

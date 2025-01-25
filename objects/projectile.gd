@@ -24,5 +24,17 @@ func _physics_process(_delta: float) -> void:
     transform = transform.translated_local(direction * move_speed)
     sprite.transform = sprite.transform.rotated_local(0.07)
 
-func _on_collider_body_entered(_body: Node2D) -> void:
+func _on_collider_body_entered(body: Node2D) -> void:
     queue_free() # Destroy the projectile
+
+    # This should be a CharacterBody2D of the player. If this cast
+    # fails, it means we have a different body that can collide with
+    # projectile and we should handle it explicitly.
+    var player := body as CharacterBody2D
+    player.take_damage(1) # TODO variable damage?
+
+
+func _on_collider_area_entered(_area: Area2D) -> void:
+    queue_free() # Destroy the projectile
+
+    # This should be an Area of enemy.

@@ -29,7 +29,7 @@ func _ready() -> void:
     heal_timer.one_shot = false
     heal_timer.connect("timeout", Callable(self, "_on_heal_timer_timeout"))
     heal_timer.start()
-    
+
 func update_health_bar() -> void:
     # add/remove health based on max health
     while health_bar.get_child_count() < max_health:
@@ -50,16 +50,16 @@ func take_damage(amount: int) -> void:
     current_health = clamp(current_health, 0, max_health)
     update_health_bar()
     heal_timer.start()
-    
+
     if current_health == 0:
         die()
-        
+
 func _on_heal_timer_timeout() -> void:
     # Heal the player by 1 health point if not at max health
     if current_health < max_health:
         heal(1)
         print("Player healed by 1!")
-        
+
 func heal(amount: int) -> void:
     current_health += amount
     current_health = clamp(current_health, 0, max_health)
@@ -69,7 +69,7 @@ func increase_max_health(amount: int) -> void:
     max_health += amount
     current_health = max_health
     update_health_bar()
-    
+
 func die() -> void:
     print("Player died!")
     queue_free()
