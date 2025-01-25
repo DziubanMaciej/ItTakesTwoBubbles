@@ -8,9 +8,13 @@ extends Node2D
 
 var action_fire = str(player, "_fire")
 
-var A : float = 2.0
-var t : float = 3.0
 var time : float = .0
+const AMPLIFICATION : float = 4.0
+const OMEGA : float = 3.0
+
+const WEIGHT : float = .5
+
+var previous_global_position : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,7 +26,7 @@ func _process(delta: float) -> void:
     time += delta
 
     # rotation stuff
-    look_at(get_global_mouse_position())
+    #look_at(get_global_mouse_position())
 
     rotation_degrees = wrap(rotation_degrees, 0, 360)
     if rotation_degrees > 90 and rotation_degrees < 270:
@@ -31,11 +35,8 @@ func _process(delta: float) -> void:
         scale.y = 1
 
     # self transformation
-    position = Vector2.ONE * A * sin(time * t)
-
-    # global transformations
-    print(get_parent().name, get_parent().global_position)
-    print(             name,              global_position)
+    global_position = lerp(previous_global_position, get_parent().global_position, WEIGHT)
+    global_position.y += AMPLIFICATION * sin(OMEGA * time)
 
     # actions
     if Input.is_action_just_pressed(action_fire):
@@ -44,3 +45,6 @@ func _process(delta: float) -> void:
         bullet_instance.global_position = muzzle.global_position
         bullet_instance.rotation = rotation
         bullet_instance.enable_enemy_collision()
+
+    # save previous state
+    previous_global_position = global_position
