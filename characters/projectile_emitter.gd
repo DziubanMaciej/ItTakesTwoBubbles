@@ -22,3 +22,4 @@ func _on_timer_timeout() -> void:
     projectile_container.add_child(projectile)
     projectile.global_position = global_position
     projectile.set_direction_left()
+    projectile.enable_player_collision()

@@ -26,3 +26,4 @@ func _process(delta: float) -> void:
         get_tree().root.add_child(bullet_instance)
         bullet_instance.global_position = muzzle.global_position
         bullet_instance.rotation = rotation
+        bullet_instance.enable_enemy_collision()
