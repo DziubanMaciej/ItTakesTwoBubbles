@@ -21,11 +21,12 @@ tile_set = ExtResource("1_y3mlu")
 tile_map_data = PackedByteArray("AAD//wQAAAACAAAAAAD9/wIAAAACAAAAAAD3/wIAAAADAAAAAAD3/wEAAAADAAEAAAD3/wAAAAACAAAAACAEAAQAAAACAAAAACAFAAQAAAACAAAAACADAAIAAAACAAEAAAAOAAIAAAACAAEAAAAOAAEAAAADAAEAAAAYAAMAAAACAAAAAAAaAAAAAAACAAEAAAAgAPr/AAACAAEAAAAiAAIAAAACAAEAAAAQAAQAAAAAAAIAAAAZAAQAAAAAAAIAABALAAIAAAAAAAIAABD6/wQAAAAAAAIAADA=")
 tile_set = ExtResource("1_y3mlu")
 
-[node name="Player" parent="." instance=ExtResource("1_lr5wh")]
+[node name="Player0" parent="." instance=ExtResource("1_lr5wh")]
 position = Vector2(187, 503)
 
-[node name="CameraSetter" type="RemoteTransform2D" parent="Player"]
-remote_path = NodePath("../../../Camera2D")
+[node name="Player1" parent="." instance=ExtResource("1_lr5wh")]
+position = Vector2(375, 347)
+player_index = 1
 
 [node name="Enemy" parent="." instance=ExtResource("7_lgagm")]
 position = Vector2(1086, 421)

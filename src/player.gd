@@ -7,12 +7,12 @@ const HEAL_DELAY = 15.0
 
 @onready var health_bar = $HealthBar
 @onready var heal_timer = Timer.new()
-@export var player = "player0"
+@export var player_index := 0
 
-var action_left = str(player, "_left")
-var action_right = str(player, "_right")
-var action_jump = str(player, "_jump")
-var action_shoot = str(player, "_shoot")
+@onready var action_left = str("player", player_index, "_left")
+@onready var action_right = str("player", player_index, "_right")
+@onready var action_jump = str("player", player_index, "_jump")
+@onready var action_fire = str("player", player_index, "_fire")
 
 # Flag to track if the jump button is being held
 var jump_held = false
@@ -28,6 +28,7 @@ func _ready() -> void:
     health_bar.current_health = 8
 
     $CameraSetter.remote_path = LevelGlobals.camera.get_path()
+    $GunMarker/Gun/Sprite2D.frame = player_index
 
 func take_damage(amount: int) -> void:
     health_bar.take_damage(amount)
@@ -81,5 +82,9 @@ func _physics_process(delta: float) -> void:
         velocity.x = direction * SPEED
     else:
         velocity.x = move_toward(velocity.x, 0, SPEED)
+
+    # Shoot
+    if Input.is_action_just_pressed(action_fire):
+        $GunMarker/Gun.shoot()
 
     move_and_slide()

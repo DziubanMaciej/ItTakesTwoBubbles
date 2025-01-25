@@ -14,4 +14,5 @@ func start_level():
     add_child(level)
 
     LevelGlobals.players.clear()
-    LevelGlobals.players.push_back(level.get_node("Player"))
+    LevelGlobals.players.push_back(level.get_node("Player0"))
+    LevelGlobals.players.push_back(level.get_node("Player1"))

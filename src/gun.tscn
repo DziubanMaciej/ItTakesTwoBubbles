@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bc35mh3cchynq"]
 
 [ext_resource type="Script" path="res://src/gun.gd" id="1_u7l5j"]
-[ext_resource type="Texture2D" uid="uid://ehkr5jaey13t" path="res://img/Gun_1.png" id="2_5vo8c"]
+[ext_resource type="Texture2D" uid="uid://d4ejni1d2qxfs" path="res://img/gun_tile_set.png" id="2_wdok0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2n4uc"]
 size = Vector2(128, 64)
@@ -12,9 +12,10 @@ script = ExtResource("1_u7l5j")
 kind = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(13.3144, -10.6293)
+position = Vector2(16, -12)
 scale = Vector2(-0.683051, 0.711672)
-texture = ExtResource("2_5vo8c")
+texture = ExtResource("2_wdok0")
+hframes = 2
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(79, -9)
