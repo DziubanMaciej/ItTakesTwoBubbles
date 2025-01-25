@@ -16,7 +16,7 @@ var time : float = .0
 const AMPLIFICATION : float = 4.0
 const OMEGA : float = 3.0
 
-const WEIGHT : float = .5
+const WEIGHT : float = .3
 
 var previous_global_position : Vector2 = Vector2.ZERO
 
