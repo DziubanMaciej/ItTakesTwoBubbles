@@ -5,14 +5,19 @@ extends Node2D
 
 @export var projectile_container: Node2D
 @export var player = "player0"
+
 var action_fire = str(player, "_fire")
+
+var time : float = .0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+    time += delta
+
     look_at(get_global_mouse_position())
 
     rotation_degrees = wrap(rotation_degrees, 0, 360)
@@ -21,6 +26,14 @@ func _process(_delta: float) -> void:
     else:
         scale.y = 1
 
+    # self transformation
+    position = Vector2.ONE * sin(time * 3) * 2
+
+    # global transformations
+    print(get_parent().name, get_parent().global_position)
+    print(             name,              global_position)
+
+    # actions
     if Input.is_action_just_pressed(action_fire):
         var bullet_instance = scene_projectile.instantiate()
         get_tree().root.add_child(bullet_instance)
