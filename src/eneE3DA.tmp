@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://djastt7ttrq2"]
+[gd_scene load_steps=8 format=3 uid="uid://dctfc16tfrd8n"]
 
+[ext_resource type="Script" path="res://src/enemy.gd" id="1_ja4ly"]
 [ext_resource type="Texture2D" uid="uid://c2cs11157mbsn" path="res://img/bg.png" id="2_vb4js"]
 [ext_resource type="PackedScene" uid="uid://bvtdh82j8amkd" path="res://src/projectile_emitter.tscn" id="3_85wgv"]
 
@@ -45,6 +46,7 @@ _data = {
 }
 
 [node name="Root" type="Node2D"]
+script = ExtResource("1_ja4ly")
 
 [node name="Enemy" type="Node2D" parent="."]
 

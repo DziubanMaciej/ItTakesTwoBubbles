@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name ProjectileEmitter
+
 enum Type {
     Horizontal,
     Aimed,

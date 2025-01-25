@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ohk7l4y4iuct"]
+[gd_scene load_steps=11 format=4 uid="uid://ohk7l4y4iuct"]
 
 [ext_resource type="PackedScene" uid="uid://bapmn72w0f62v" path="res://src/player.tscn" id="1_lr5wh"]
 [ext_resource type="Script" path="res://src/level.gd" id="1_mef5n"]
@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bmon4t7gprfel" path="res://img/clouds_1.png" id="4_ee2bx"]
 [ext_resource type="Texture2D" uid="uid://dg8fkxllnm6xl" path="res://img/clouds_2.png" id="4_u8lsb"]
 [ext_resource type="Texture2D" uid="uid://ohw4f1s6kliy" path="res://img/ground.png" id="5_xs5sj"]
-[ext_resource type="PackedScene" uid="uid://djastt7ttrq2" path="res://src/scripted_enemy.tscn" id="7_lgagm"]
-[ext_resource type="PackedScene" uid="uid://dctfc16tfrd8n" path="res://src/stationary_enemy.tscn" id="8_pxwiw"]
+[ext_resource type="PackedScene" uid="uid://dctfc16tfrd8n" path="res://src/enemy.tscn" id="7_lgagm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2sjn"]
 texture = ExtResource("2_ey4w8")
@@ -83,7 +82,10 @@ tile_map_data = PackedByteArray("AAAEAAQAAQAAAAAAAAADAAQAAQAAAAAAAAACAAQAAQAAAAA
 tile_set = SubResource("TileSet_ffjww")
 
 [node name="Enemy" parent="." instance=ExtResource("7_lgagm")]
-position = Vector2(297, 144)
+position = Vector2(319, 178)
+shoot_type = 1
+ai_type = 1
+model = 1
 
-[node name="StationaryEnemy" parent="." instance=ExtResource("8_pxwiw")]
-position = Vector2(-50, -267)
+[node name="Enemy2" parent="." instance=ExtResource("7_lgagm")]
+position = Vector2(498, 184)

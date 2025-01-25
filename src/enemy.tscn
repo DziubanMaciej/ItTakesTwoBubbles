@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://dctfc16tfrd8n"]
+
+[ext_resource type="Script" path="res://src/enemy.gd" id="1_ja4ly"]
+[ext_resource type="Texture2D" uid="uid://c2cs11157mbsn" path="res://img/bg.png" id="2_vb4js"]
+[ext_resource type="PackedScene" uid="uid://bvtdh82j8amkd" path="res://src/projectile_emitter.tscn" id="3_85wgv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a21d3"]
+size = Vector2(61, 57)
+
+[sub_resource type="Animation" id="Animation_uk6lm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eui0d"]
+resource_name = "patrol_up"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.7, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -200), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ioyef"]
+_data = {
+"RESET": SubResource("Animation_uk6lm"),
+"patrol_up": SubResource("Animation_eui0d")
+}
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_ja4ly")
+
+[node name="Root" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Root"]
+texture = ExtResource("2_vb4js")
+hframes = 8
+vframes = 8
+frame = 14
+region_rect = Rect2(192.823, 130.219, 60.9859, 57.1305)
+
+[node name="Area2D" type="Area2D" parent="Root"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Root/Area2D"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_a21d3")
+
+[node name="MovementAnimation" type="AnimationPlayer" parent="Root"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_ioyef")
+}
+
+[node name="ProjectileEmitter" parent="Root" instance=ExtResource("3_85wgv")]
