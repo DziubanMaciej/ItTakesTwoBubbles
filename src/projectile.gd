@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Projectile
+
 @onready var sprite = $Sprite2D
 
 var direction = Vector2(1, 0)
@@ -12,6 +14,26 @@ const enemy_layer_index = 4
 var bounces = 0
 const max_bounces = 3
 
+enum ProjectileType {
+    Unknown,
+    PlayerSoap,
+    PlayerWater,
+    Enemy,
+}
+var projectile_type := ProjectileType.Unknown
+
+func set_projectile_type(type : ProjectileType):
+    projectile_type = type
+    match type:
+        ProjectileType.PlayerSoap:
+            $Sprite2D.modulate = Color(1, 0, 0, 1) # TODO debug color to visualize
+            $Collider.set_collision_mask_value(enemy_layer_index, true)
+        ProjectileType.PlayerWater:
+            $Sprite2D.modulate = Color(0, 1, 0, 1) # TODO debug color to visualize
+            $Collider.set_collision_mask_value(enemy_layer_index, true)
+        ProjectileType.Enemy:
+            $Collider.set_collision_mask_value(player_layer_index, true)
+
 func set_direction_right():
     direction.x = 1
 
@@ -20,12 +42,6 @@ func set_direction_left():
 
 func set_direction(vec : Vector2):
     direction = vec.normalized()
-
-func enable_player_collision():
-    $Collider.set_collision_mask_value(player_layer_index, true)
-
-func enable_enemy_collision():
-    $Collider.set_collision_mask_value(enemy_layer_index, true)
 
 func _physics_process(_delta: float) -> void:
     transform = transform.translated_local(direction * move_speed)

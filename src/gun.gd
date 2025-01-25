@@ -16,10 +16,12 @@ const OMEGA : float = 3.0
 const WEIGHT : float = .3
 
 var previous_global_position : Vector2 = Vector2.ZERO
+var projectile_type := Projectile.ProjectileType.PlayerSoap
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-    pass # Replace with function body.
+func set_player_index(idx):
+    $Sprite2D.frame = idx
+    if idx == 1:
+        projectile_type = Projectile.ProjectileType.PlayerWater
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -48,8 +50,7 @@ func shoot():
 
             p.global_position = muzzle.global_position
             p.rotation = rotation
-
-            p.enable_enemy_collision()
+            p.set_projectile_type(projectile_type)
 
         KIND.MOLD_REMOVER:
             var rs: Array[float] = [ -PI / 4, 0, PI / 4 ]
@@ -62,7 +63,7 @@ func shoot():
                 p.rotation = rotation
 
                 p.rotate(rs[idx])
-                p.enable_enemy_collision()
+                p.set_projectile_type(projectile_type)
 
         _:
             print("WARNING: no-op!")

@@ -35,7 +35,7 @@ func _on_timer_timeout() -> void:
     var projectile = scene_projectile.instantiate()
     LevelGlobals.projectile_container.add_child(projectile)
     projectile.global_position = global_position
-    projectile.enable_player_collision()
+    projectile.set_projectile_type(Projectile.ProjectileType.Enemy)
 
     match type:
         Type.Horizontal:
