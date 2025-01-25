@@ -29,5 +29,5 @@ polygon = PackedVector2Array(-52, -442, -52, -422, -92, -422, -92, -402, -112, -
 [node name="Emitter" type="Node2D" parent="."]
 position = Vector2(25.035, -80)
 
-[node name="gun" parent="." instance=ExtResource("3_tg4wh")]
+[node name="Gun" parent="." instance=ExtResource("3_tg4wh")]
 position = Vector2(-15, -80)
