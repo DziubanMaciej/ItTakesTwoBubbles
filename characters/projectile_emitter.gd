@@ -25,6 +25,9 @@ func setup_timer():
 func _on_timer_timeout() -> void:
     setup_timer()
 
+    if LevelGlobals.players.is_empty():
+        return
+
     var projectile = scene_projectile.instantiate()
     LevelGlobals.projectile_container.add_child(projectile)
     projectile.global_position = global_position
@@ -37,7 +40,6 @@ func _on_timer_timeout() -> void:
             var player_position = get_random_player_position()
             var direction = global_position.direction_to(player_position)
             projectile.set_direction(direction)
-
 
 func get_random_player_position() -> Vector2:
     var player_index = randi_range(0, LevelGlobals.players.size() - 1)

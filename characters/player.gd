@@ -52,6 +52,8 @@ func increase_max_health(amount: int) -> void:
     health_bar.update_health_bar()
 
 func die() -> void:
+    LevelGlobals.players.erase(self)
+
     print("Player died!")
     queue_free()
 
