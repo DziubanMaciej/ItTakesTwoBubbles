@@ -4,8 +4,6 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const DEFAULT_MAX_HEALTH = 5
 const HEAL_DELAY = 15.0
-# Projectile container is a parent node for each projectile. We need it to be
-# relative to world, not the player.
 
 @onready var health_bar = $HealthBar
 @onready var heal_timer = Timer.new()
@@ -28,6 +26,8 @@ func _ready() -> void:
     heal_timer.start()
     health_bar.max_health = 8
     health_bar.current_health = 8
+
+    $CameraSetter.remote_path = LevelGlobals.camera.get_path()
 
 func take_damage(amount: int) -> void:
     health_bar.take_damage(amount)
