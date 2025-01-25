@@ -8,6 +8,8 @@ extends Node2D
 
 var action_fire = str(player, "_fire")
 
+var A : float = 2.0
+var t : float = 3.0
 var time : float = .0
 
 # Called when the node enters the scene tree for the first time.
@@ -16,8 +18,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+    # update floating state
     time += delta
 
+    # rotation stuff
     look_at(get_global_mouse_position())
 
     rotation_degrees = wrap(rotation_degrees, 0, 360)
@@ -27,7 +31,7 @@ func _process(delta: float) -> void:
         scale.y = 1
 
     # self transformation
-    position = Vector2.ONE * sin(time * 3) * 2
+    position = Vector2.ONE * A * sin(time * t)
 
     # global transformations
     print(get_parent().name, get_parent().global_position)
