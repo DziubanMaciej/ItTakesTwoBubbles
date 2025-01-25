@@ -17,9 +17,9 @@ func _process(_delta: float) -> void:
 
     rotation_degrees = wrap(rotation_degrees, 0, 360)
     if rotation_degrees > 90 and rotation_degrees < 270:
-        scale.y = -.5
+        scale.y = -1
     else:
-        scale.y = .5
+        scale.y = 1
 
     if Input.is_action_just_pressed(action_fire):
         var bullet_instance = scene_projectile.instantiate()

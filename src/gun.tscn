@@ -1,16 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc35mh3cchynq"]
+[gd_scene load_steps=4 format=3 uid="uid://bc35mh3cchynq"]
 
 [ext_resource type="Script" path="res://src/gun.gd" id="1_u7l5j"]
 [ext_resource type="Texture2D" uid="uid://2kjsqc7l2cpr" path="res://img/gun.png" id="2_lu1rw"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2n4uc"]
+size = Vector2(128, 64)
+
 [node name="gun" type="Node2D"]
 position = Vector2(0, -64)
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_u7l5j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(78, -12)
+position = Vector2(22, 0)
+scale = Vector2(0.36019, 0.36019)
 texture = ExtResource("2_lu1rw")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(254, -34)
+position = Vector2(79, -9)
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(21, -2)
+shape = SubResource("RectangleShape2D_2n4uc")
+disabled = true
