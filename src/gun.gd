@@ -46,7 +46,7 @@ func shoot():
         KIND.AGRESSIVE_BUBBLE_DESTROYER:
             var p = scene_projectile.instantiate()
 
-            get_tree().root.add_child(p)
+            LevelGlobals.projectile_container.add_child(p)
 
             p.global_position = muzzle.global_position
             p.rotation = rotation
@@ -57,7 +57,7 @@ func shoot():
             for idx in 3:
                 var p = scene_projectile.instantiate()
 
-                get_tree().root.add_child(p)
+                LevelGlobals.projectile_container.add_child(p)
 
                 p.global_position = muzzle.global_position
                 p.rotation = rotation

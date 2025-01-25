@@ -58,6 +58,8 @@ func die() -> void:
     print("Player died!")
     queue_free()
 
+    LevelGlobals.root.start_level()
+
 func _process(_delta: float) -> void:
     pass
 
