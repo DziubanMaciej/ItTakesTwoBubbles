@@ -29,9 +29,15 @@ func _process(delta: float) -> void:
     # update floating state
     time += delta
 
-    # self transformation
+    # follow mouse
+    look_at(get_global_mouse_position())
+
+    # flip the weapon accordingly to the position of the curosr
+    scale.y = -1 if rotation > (PI / 2) and rotation < (3 * PI / 2) else 1
+
+    # wiggle + spring-like float
     global_position = lerp(previous_global_position, get_parent().global_position, WEIGHT)
-    global_position.y += AMPLIFICATION * sin(OMEGA * time)
+    global_position.y += AMPLIFICATION * sin(OMEGA * time) 
 
     # actions
     if Input.is_action_just_pressed(action_fire):
