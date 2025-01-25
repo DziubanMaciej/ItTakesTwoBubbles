@@ -9,6 +9,7 @@ size = Vector2(128, 64)
 [node name="gun" type="Node2D"]
 position = Vector2(0, -64)
 script = ExtResource("1_u7l5j")
+kind = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(22, 0)

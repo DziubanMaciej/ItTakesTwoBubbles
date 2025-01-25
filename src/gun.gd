@@ -1,10 +1,14 @@
 extends Node2D
 
+enum KIND {AGRESSIVE_BUBBLE_DESTROYER, MOLD_REMOVER, MULTI_BUBBLI, BUBBLETHROWER, BULBULATOR}
+
 @onready var muzzle: Marker2D = $Marker2D
 @onready var scene_projectile = preload("res://src/projectile.tscn")
 
 @export var projectile_container: Node2D
 @export var player = "player0"
+
+@export var kind : KIND = KIND.AGRESSIVE_BUBBLE_DESTROYER
 
 var action_fire = str(player, "_fire")
 
@@ -25,26 +29,39 @@ func _process(delta: float) -> void:
     # update floating state
     time += delta
 
-    # rotation stuff
-    #look_at(get_global_mouse_position())
-
-    rotation_degrees = wrap(rotation_degrees, 0, 360)
-    if rotation_degrees > 90 and rotation_degrees < 270:
-        scale.y = -1
-    else:
-        scale.y = 1
-
     # self transformation
     global_position = lerp(previous_global_position, get_parent().global_position, WEIGHT)
     global_position.y += AMPLIFICATION * sin(OMEGA * time)
 
     # actions
     if Input.is_action_just_pressed(action_fire):
-        var bullet_instance = scene_projectile.instantiate()
-        get_tree().root.add_child(bullet_instance)
-        bullet_instance.global_position = muzzle.global_position
-        bullet_instance.rotation = rotation
-        bullet_instance.enable_enemy_collision()
+        match kind:
+            KIND.AGRESSIVE_BUBBLE_DESTROYER:
+                var p = scene_projectile.instantiate()
+
+                get_tree().root.add_child(p)
+
+                p.global_position = muzzle.global_position
+                p.rotation = rotation
+
+                p.enable_enemy_collision()
+
+            KIND.MOLD_REMOVER:
+                var rs: Array[float] = [ -PI / 4, 0, PI / 4 ]
+                for idx in 3:
+                    var p = scene_projectile.instantiate()
+
+                    get_tree().root.add_child(p)
+
+                    p.global_position = muzzle.global_position
+                    p.rotation = rotation
+
+                    p.rotate(rs[idx])
+                    p.enable_enemy_collision()
+
+            _:
+                print("WARNING: no-op!")
+
 
     # save previous state
     previous_global_position = global_position
