@@ -2,9 +2,9 @@ extends Node
 
 class_name Root
 
-@onready var level0 = preload("res://src/level_0.tscn")
+@onready var level1 = preload("res://src/level_1.tscn")
 
-var level_index = 0
+var level_index = 1
 var current_level = null
 
 func _ready() -> void:
@@ -16,10 +16,10 @@ func _ready() -> void:
 
 func get_current_level_scene():
     match level_index:
-        0: return level0
+        1: return level1
         _:
             print("Unknown level index. Returning level 0")
-            return level0
+            return level1
 
 func start_level():
     if current_level != null:
