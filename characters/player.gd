@@ -6,13 +6,15 @@ const DEFAULT_MAX_HEALTH = 5
 
 # Projectile container is a parent node for each projectile. We need it to be
 # relative to world, not the player.
+
+@onready var bubble_image = preload("res://objects/buble.png")
+@onready var health_bar = $HealthBarCanvas/HealthBar
 @export var player = "player0"
+
 var action_left = str(player, "_left")
 var action_right = str(player, "_right")
 var action_jump = str(player, "_jump")
 var action_shoot = str(player, "_shoot")
-@onready var bubble_image = preload("res://objects/buble.png")
-@onready var health_bar = $HealthBarCanvas/HealthBar
 
 # Flag to track if the jump button is being held
 var jump_held = false
