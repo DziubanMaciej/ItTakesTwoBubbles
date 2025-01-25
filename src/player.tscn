@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bc35mh3cchynq" path="res://src/gun.tscn" id="3_tg4wh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jolsw"]
-size = Vector2(64, 128)
+size = Vector2(58, 125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvqen"]
 size = Vector2(64, 64)
@@ -28,9 +28,8 @@ scale = Vector2(0.162, 0.15)
 texture = ExtResource("1_nr0l5")
 
 [node name="CollisionShapeRect" type="CollisionShape2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(0, -62.5)
 shape = SubResource("RectangleShape2D_jolsw")
-disabled = true
 debug_color = Color(0.842909, 0.380623, 5.77569e-07, 0.42)
 
 [node name="CollisionShapeCrouch" type="CollisionShape2D" parent="."]
@@ -43,6 +42,7 @@ debug_color = Color(1.05888e-06, 0.667493, 0.784125, 0.42)
 position = Vector2(2, -63)
 scale = Vector2(0.162, 0.15)
 polygon = PackedVector2Array(-52, -442, -52, -422, -92, -422, -92, -402, -112, -402, -112, -382, -132, -382, -132, -238, -112, -238, -112, -198, -92, -198, -92, -178, -72, -178, -72, -162, -132, -162, -132, -142, -152, -142, -152, -62, -172, -62, -172, 62, -152, 62, -152, 162, -112, 162, -112, 378, -152, 378, -152, 398, -172, 398, -172, 422, -48, 422, -48, 242, -28, 242, -28, 122, 8, 122, 8, 242, 28, 242, 28, 422, 152, 422, 152, 398, 132, 398, 132, 378, 92, 378, 92, 182, 132, 182, 132, 62, 152, 62, 152, -62, 132, -62, 132, -142, 112, -142, 112, -162, 52, -162, 52, -178, 72, -178, 72, -198, 92, -198, 92, -238, 112, -238, 112, -382, 92, -382, 92, -402, 72, -402, 72, -422, 32, -422, 32, -442)
+disabled = true
 
 [node name="Emitter" type="Node2D" parent="."]
 position = Vector2(25.035, -80)

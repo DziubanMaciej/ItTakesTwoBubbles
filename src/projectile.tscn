@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://yktwj2grkxr5"]
 
 [ext_resource type="Script" path="res://src/projectile.gd" id="1_gciss"]
-[ext_resource type="Texture2D" uid="uid://c2cs11157mbsn" path="res://img/bg.png" id="1_ysi0o"]
+[ext_resource type="Texture2D" uid="uid://cyjrq0aofot01" path="res://img/buble.png" id="2_mdqnv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibn66"]
 
@@ -9,9 +9,9 @@
 script = ExtResource("1_gciss")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.359375, 0.359375)
-texture = ExtResource("1_ysi0o")
-region_enabled = true
+position = Vector2(-4.76837e-07, 2.38419e-07)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("2_mdqnv")
 region_rect = Rect2(64, 32, 64, 64)
 
 [node name="Collider" type="Area2D" parent="."]

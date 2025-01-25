@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -550.0
 const DEFAULT_MAX_HEALTH = 5
 const HEAL_DELAY = 15.0
 

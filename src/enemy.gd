@@ -25,9 +25,9 @@ func _ready() -> void:
 
     match model:
         Model.Model1:
-            $Root/Sprite2D.frame = 21
+            $Root/Sprite2D.region_rect.position = Vector2(263, -11)
         Model.Model2:
-            $Root/Sprite2D.frame = 18
+            $Root/Sprite2D.region_rect.position = Vector2(90, 243)
 
 func take_damage(amount: int) -> void:
     # TODO enemy health

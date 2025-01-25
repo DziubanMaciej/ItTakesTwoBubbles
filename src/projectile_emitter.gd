@@ -8,8 +8,8 @@ enum Type {
     Aimed,
 }
 
-@export var min_timeout : float = 1
-@export var max_timeout : float = 1
+@export var min_timeout : float = 2.5
+@export var max_timeout : float = 5
 @export var type := Type.Horizontal
 
 @onready var scene_projectile = preload("res://src/projectile.tscn")
