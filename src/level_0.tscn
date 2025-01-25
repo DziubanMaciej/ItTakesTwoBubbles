@@ -29,9 +29,3 @@ player_index = 1
 
 [node name="Enemy" parent="." instance=ExtResource("7_lgagm")]
 position = Vector2(3347, 548)
-
-[node name="Enemy2" parent="." instance=ExtResource("7_lgagm")]
-position = Vector2(6679, 478)
-
-[node name="Enemy3" parent="." instance=ExtResource("7_lgagm")]
-position = Vector2(9244, 156)
