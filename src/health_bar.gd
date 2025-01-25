@@ -2,7 +2,7 @@ extends HBoxContainer
 
 @export var max_health: int = 5
 @export var current_health: int = 5
-@onready var bubble_image = preload("res://img/buble_16.png")
+@onready var bubble_image = preload("res://img/buble.png")
 
 func _ready() -> void:
     update_health_bar()
@@ -12,6 +12,7 @@ func update_health_bar() -> void:
     while get_child_count() < max_health:
         var bubble = TextureRect.new()
         bubble.texture = bubble_image
+        bubble.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
         bubble.visible = true
         add_child(bubble)
 
