@@ -17,16 +17,15 @@ func _physics_process(delta):
         velocity.y = JUMP_VELOCITY
 
     var distance : int = 0
-    var maybe_direction : Vector2 = Vector2.ZERO
+    var direction : Vector2 = Vector2.ZERO
     for p in LevelGlobals.players:
         var d : int = floor(global_position.distance_to(p.global_position)) as int
-        if d < distance:
+        print(d)
+        if d > distance:
             distance = d
-            maybe_direction = (player.global_position - global_position).normalized()
 
-    var direction : Vector2 = Vector2.ZERO
-    if distance < LevelGlobals.TILE_SIZE * 5:
-        direction = maybe_direction
+        if distance > 0 and distance < LevelGlobals.TILE_SIZE * 10:
+            direction = (p.global_position - global_position).normalized()
 
     velocity.x = direction.x * SPEED
 
