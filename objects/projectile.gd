@@ -20,9 +20,9 @@ func enable_player_collision():
 func enable_enemy_collision():
     $Collider.set_collision_mask_value(enemy_layer_index, true)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     transform = transform.translated_local(direction * move_speed)
     sprite.transform = sprite.transform.rotated_local(0.07)
 
-func _on_collider_body_entered(body: Node2D) -> void:
+func _on_collider_body_entered(_body: Node2D) -> void:
     queue_free() # Destroy the projectile

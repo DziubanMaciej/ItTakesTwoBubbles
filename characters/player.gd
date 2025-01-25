@@ -14,7 +14,7 @@ var action_shoot = str(player, "_shoot")
 # Flag to track if the jump button is being held
 var jump_held = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     pass
 
 func _physics_process(delta: float) -> void:

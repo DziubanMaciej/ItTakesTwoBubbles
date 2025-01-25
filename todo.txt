@@ -1,0 +1,12 @@
+[] struktura folderów, może folder per scena? ponoć TAK SIĘ ROBI ;]
+[] design poziomów -> czy robimy to jakoś proceduralnie, czy ręcznie?
+[] paski życia nad przeciwnikami
+[] kolizje projectile'i z przeciwnikami
+[] różne rodzaje broni -> szybkostrzelna, ale nie przebija przeciwników, może się długo rozpędzać i może mieć cooldown; wolnostrzelna?, ale przebija przeciwników, należy przeładować; wystrzeliwująca ileś wybuchających kul na raz, zadaje obszarowe obrażenia i robi wybuch, który trzęsie viewport'em gry; mutlishot; co tam jeszcze?
+[] różne rodzaje przeciwników
+[] być może różne rodzaje amunicji
+[] w jaki sposób sprawimy, że przeciwnicy będą wyzwaniem oprócz potencjalnie ich zwinności? czy tylko długo w nich napierdalamy?
+[] bąbelkowy dym z luf broni? efekty per broń?
+[] ustalić sens gry, czy idziemy cały czas do przodu czy napierdalamy, czy mamy jakiś stage, który musimy przejść, czy może robimy coś w stylu zamknięta plansza i musimy zabić wszystkich przeciwników?
+[] postacie -> różne skille?
+[] menu
