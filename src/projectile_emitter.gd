@@ -3,6 +3,7 @@ extends Node2D
 class_name ProjectileEmitter
 
 enum Type {
+    None,
     Horizontal,
     Aimed,
 }
@@ -15,8 +16,6 @@ enum Type {
 
 var rng = RandomNumberGenerator.new()
 
-
-
 func _ready() -> void:
     setup_timer()
 
@@ -28,6 +27,9 @@ func _on_timer_timeout() -> void:
     setup_timer()
 
     if LevelGlobals.players.is_empty():
+        return
+
+    if type == Type.None:
         return
 
     var projectile = scene_projectile.instantiate()
