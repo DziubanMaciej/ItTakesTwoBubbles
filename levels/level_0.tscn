@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=4 uid="uid://ohk7l4y4iuct"]
+[gd_scene load_steps=12 format=4 uid="uid://ohk7l4y4iuct"]
 
 [ext_resource type="PackedScene" uid="uid://bapmn72w0f62v" path="res://characters/player.tscn" id="1_lr5wh"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_mef5n"]
 [ext_resource type="Texture2D" uid="uid://c2cs11157mbsn" path="res://img/bg.png" id="2_ey4w8"]
 [ext_resource type="Texture2D" uid="uid://eod8w3wxoilg" path="res://img/sky.png" id="3_mwran"]
 [ext_resource type="Texture2D" uid="uid://bmon4t7gprfel" path="res://img/clouds_1.png" id="4_ee2bx"]
 [ext_resource type="Texture2D" uid="uid://dg8fkxllnm6xl" path="res://img/clouds_2.png" id="4_u8lsb"]
 [ext_resource type="Texture2D" uid="uid://ohw4f1s6kliy" path="res://img/ground.png" id="5_xs5sj"]
 [ext_resource type="PackedScene" uid="uid://djastt7ttrq2" path="res://characters/scripted_enemy.tscn" id="7_lgagm"]
+[ext_resource type="PackedScene" uid="uid://dctfc16tfrd8n" path="res://characters/stationary_enemy.tscn" id="8_pxwiw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2sjn"]
 texture = ExtResource("2_ey4w8")
@@ -22,6 +24,7 @@ sources/1 = SubResource("TileSetAtlasSource_e2sjn")
 
 [node name="Root" type="Node2D"]
 position = Vector2(574, 326)
+script = ExtResource("1_mef5n")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -80,6 +83,8 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAAEAAQAAQAAAAAAAAADAAQAAQAAAAAAAAACAAQAAQAAAAAAAAABAAQAAQAAAAAAAAAAAAQAAQAAAAAAAAD//wQAAQAAAAAAAAD+/wQAAQAAAAAAAAD9/wQAAQAAAAAAAAD8/wQAAQAAAAAAAAD7/wQAAQAAAAAAAAD6/wQAAQAAAAAAAAD5/wQAAQAAAAAAAAD4/wQAAQAAAAAAAAD3/wQAAQAAAAAAAAD2/wQAAQAAAAAAAAD1/wQAAQAAAAAAAAD0/wQAAQAAAAAAAADz/wQAAQAAAAAAAADy/wQAAQAAAAAAAADx/wQAAQAAAAAAAADw/wQAAQAAAAAAAAAOAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_ffjww")
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("projectile_container") instance=ExtResource("7_lgagm")]
+[node name="Enemy" parent="." instance=ExtResource("7_lgagm")]
 position = Vector2(297, 144)
-projectile_container = NodePath("../ProjectileContainer")
+
+[node name="StationaryEnemy" parent="." instance=ExtResource("8_pxwiw")]
+position = Vector2(-50, -267)

@@ -1,12 +1,19 @@
 extends Node2D
 
-@export var min_timeout : float = 1
-@export var max_timeout : float = 3
+enum Type {
+    Horizontal,
+    Aimed,
+}
 
-@export var projectile_container : Node2D
+@export var min_timeout : float = 1
+@export var max_timeout : float = 1
+@export var type := Type.Horizontal
+
 @onready var scene_projectile = preload("res://objects/projectile.tscn")
 
 var rng = RandomNumberGenerator.new()
+
+
 
 func _ready() -> void:
     setup_timer()
@@ -19,7 +26,20 @@ func _on_timer_timeout() -> void:
     setup_timer()
 
     var projectile = scene_projectile.instantiate()
-    projectile_container.add_child(projectile)
+    LevelGlobals.projectile_container.add_child(projectile)
     projectile.global_position = global_position
-    projectile.set_direction_left()
     projectile.enable_player_collision()
+
+    match type:
+        Type.Horizontal:
+            projectile.set_direction_left()
+        Type.Aimed:
+            var player_position = get_random_player_position()
+            var direction = global_position.direction_to(player_position)
+            projectile.set_direction(direction)
+
+
+func get_random_player_position() -> Vector2:
+    var player_index = randi_range(0, LevelGlobals.players.size() - 1)
+    var player = LevelGlobals.players[player_index]
+    return player.global_position
