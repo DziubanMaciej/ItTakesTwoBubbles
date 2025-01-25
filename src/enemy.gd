@@ -3,11 +3,10 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -550.0
 
-var direction: int = 1  # 1 for right, -1 for left
 var player: Node2D  # Reference to the player node
 
 func _ready():
-    player = get_parent().get_node("Player") as Node2D
+    pass
 
 func _physics_process(delta):
     # Add the gravity.
@@ -17,11 +16,17 @@ func _physics_process(delta):
     if is_on_floor() and is_on_wall():
         velocity.y = JUMP_VELOCITY
 
-    var direction : Vector2 = Vector2.ZERO
-    if floor(global_position.distance_to(player.global_position)) as int < LevelGlobals.TILE_SIZE * 5:
-        direction = (player.global_position - global_position).normalized()
+    var distance : int = 0
+    var maybe_direction : Vector2 = Vector2.ZERO
+    for p in LevelGlobals.players:
+        var d : int = floor(global_position.distance_to(p.global_position)) as int
+        if d < distance:
+            distance = d
+            maybe_direction = (player.global_position - global_position).normalized()
 
-    print(floor(global_position.distance_to(player.global_position)))
+    var direction : Vector2 = Vector2.ZERO
+    if distance < LevelGlobals.TILE_SIZE * 5:
+        direction = maybe_direction
 
     velocity.x = direction.x * SPEED
 
