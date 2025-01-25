@@ -1,37 +1,26 @@
-extends Node2D
+extends CharacterBody2D
 
-enum AiType {
-    Stationary,
-    UpDown,
-}
+const SPEED = 300.0
+const JUMP_VELOCITY = -550.0
 
-enum Model {
-    Model1,
-    Model2
-}
+var direction: int = 1  # 1 for right, -1 for left
+var player: Node2D  # Reference to the player node
 
-@export var shoot_type := ProjectileEmitter.Type.Horizontal
-@export var ai_type := AiType.Stationary
-@export var model := Model.Model1
+func _ready():
+    player = get_parent().get_node("Player") as Node2D
 
-func _ready() -> void:
-    $Root/ProjectileEmitter.type = shoot_type
+func _physics_process(delta):
+    # Add the gravity.
+    if not is_on_floor():
+        velocity += get_gravity() * delta
 
-    match ai_type:
-        AiType.Stationary:
-            pass
-        AiType.UpDown:
-            $Root/MovementAnimation.play("patrol_up")
+    if is_on_floor() and is_on_wall():
+        velocity.y = JUMP_VELOCITY
 
-    match model:
-        Model.Model1:
-            $Root/Sprite2D.region_rect.position = Vector2(263, -11)
-        Model.Model2:
-            $Root/Sprite2D.region_rect.position = Vector2(90, 243)
+    var direction = (player.global_position - global_position).normalized()
 
-func take_damage(amount: int) -> void:
-    # TODO enemy health
-    die()
+    velocity.x = direction.x * SPEED
 
-func die():
-    queue_free()
+    #$Sprite.scale.x = clamp(direction.x, -1, 1)
+
+    move_and_slide()
