@@ -22,5 +22,14 @@ polygon = PackedVector2Array(-52, -442, -52, -422, -92, -422, -92, -402, -112, -
 [node name="Emitter" type="Node2D" parent="."]
 position = Vector2(25.035, -80)
 
+[node name="HealthBarCanvas" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="HBoxContainer" parent="HealthBarCanvas"]
+z_index = 100
+offset_left = 21.0
+offset_top = 14.0
+offset_right = 284.0
+offset_bottom = 54.0
+
 [node name="gun" parent="." instance=ExtResource("3_tg4wh")]
 position = Vector2(-15, -80)
