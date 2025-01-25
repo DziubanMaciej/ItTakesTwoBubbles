@@ -18,11 +18,8 @@ func _ready() -> void:
     start_level()
 
 func get_current_level_scene():
-    if level_index < levels.size():
-        return levels[level_index]
-    else:
-        print("Unknown level index. Returning level 0")
-        return levels[0]
+    level_index %= levels.size()
+    return levels[level_index]
 
 func start_level():
     if current_level != null:
@@ -36,6 +33,10 @@ func start_level():
     LevelGlobals.players.clear()
     LevelGlobals.players.push_back(current_level.get_node("Player0"))
     LevelGlobals.players.push_back(current_level.get_node("Player1"))
+
+func start_next_level():
+    level_index += 1
+    start_level()
 
 func _process(delta: float) -> void:
     if Input.is_action_just_pressed("reset_level"):

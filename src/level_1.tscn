@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bapmn72w0f62v" path="res://src/player.tscn" id="2_jna8l"]
 [ext_resource type="PackedScene" uid="uid://dctfc16tfrd8n" path="res://src/enemy.tscn" id="3_yoood"]
 
-[node name="Level" type="Node"]
+[node name="Level2" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(574, 326)
