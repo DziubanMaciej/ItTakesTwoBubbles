@@ -3,12 +3,13 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const DEFAULT_MAX_HEALTH = 5
-
+const HEAL_DELAY = 15.0
 # Projectile container is a parent node for each projectile. We need it to be
 # relative to world, not the player.
 
-@onready var bubble_image = preload("res://objects/buble.png")
-@onready var health_bar = $HealthBarCanvas/HealthBar
+@onready var bubble_image = preload("res://objects/buble_16.png")
+@onready var health_bar = $HealthBar
+@onready var heal_timer = Timer.new()
 @export var player = "player0"
 
 var action_left = str(player, "_left")
@@ -23,6 +24,11 @@ var current_health = DEFAULT_MAX_HEALTH
 
 func _ready() -> void:
     update_health_bar()
+    add_child(heal_timer)  # Add the timer to the scene
+    heal_timer.wait_time = HEAL_DELAY
+    heal_timer.one_shot = false
+    heal_timer.connect("timeout", Callable(self, "_on_heal_timer_timeout"))
+    heal_timer.start()
     
 func update_health_bar() -> void:
     # add/remove health based on max health
@@ -43,9 +49,16 @@ func take_damage(amount: int) -> void:
     current_health -= amount
     current_health = clamp(current_health, 0, max_health)
     update_health_bar()
+    heal_timer.start()
     
     if current_health == 0:
         die()
+        
+func _on_heal_timer_timeout() -> void:
+    # Heal the player by 1 health point if not at max health
+    if current_health < max_health:
+        heal(1)
+        print("Player healed by 1!")
         
 func heal(amount: int) -> void:
     current_health += amount

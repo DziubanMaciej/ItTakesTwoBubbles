@@ -9,6 +9,12 @@ collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_a45wv")
 
+[node name="HealthBar" type="HBoxContainer" parent="."]
+offset_left = -54.0
+offset_top = -192.0
+offset_right = -33.0
+offset_bottom = -171.0
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -100)
 scale = Vector2(0.162, 0.15)
@@ -24,9 +30,3 @@ position = Vector2(25.035, -80)
 
 [node name="gun" parent="." instance=ExtResource("3_tg4wh")]
 position = Vector2(-15, -80)
-
-[node name="HealthBarCanvas" type="CanvasLayer" parent="."]
-
-[node name="HealthBar" type="HBoxContainer" parent="HealthBarCanvas"]
-offset_right = 40.0
-offset_bottom = 40.0
