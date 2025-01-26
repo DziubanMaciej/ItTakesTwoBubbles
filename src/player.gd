@@ -31,7 +31,6 @@ func _ready() -> void:
     health_bar.max_health = 8
     health_bar.current_health = 8
 
-    $CameraSetter.remote_path = LevelGlobals.camera.get_path()
     $GunMarker/Gun.set_player_index(player_index)
 
 func take_damage(amount: int) -> void:

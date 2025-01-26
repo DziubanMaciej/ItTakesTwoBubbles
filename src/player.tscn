@@ -81,5 +81,3 @@ position = Vector2(-10, -36)
 [node name="Gun" parent="GunMarker" instance=ExtResource("3_tg4wh")]
 position = Vector2(0, 0)
 kind = 0
-
-[node name="CameraSetter" type="RemoteTransform2D" parent="."]
