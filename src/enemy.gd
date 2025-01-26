@@ -35,7 +35,7 @@ func _physics_process(delta):
     velocity.x = direction.x * SPEED
 
     if health <= 0.0:
-        print("{} died!" % [self])
+        LevelGlobals.enemies.erase(self)
         queue_free()
 
     # TODO(milliewaly): Looks cool!

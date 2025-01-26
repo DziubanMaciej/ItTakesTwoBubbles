@@ -34,6 +34,10 @@ func start_level():
     LevelGlobals.players.push_back(current_level.get_node("Player0"))
     LevelGlobals.players.push_back(current_level.get_node("Player1"))
 
+    for n in current_level.get_children():
+        if "Enemy".to_lower() in n.name.to_lower():
+            LevelGlobals.enemies.push_back(n)
+
 func start_next_level():
     level_index += 1
     start_level()
