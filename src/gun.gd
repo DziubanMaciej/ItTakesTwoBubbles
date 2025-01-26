@@ -27,12 +27,14 @@ func set_player_index(idx):
 func _process(delta: float) -> void:
     # update floating state
     time += delta
+    rotation = clamp(rotation, 0, 2 * PI)
 
     # follow mouse
     look_at(get_global_mouse_position())
 
     # flip the weapon accordingly to the position of the curosr
-    scale.y = -1 if rotation > (PI / 2) and rotation < (3 * PI / 2) else 1
+    var s : float = -1.0 if rotation > (PI / 2) and rotation < (3 * PI / 2) else 1.0
+    scale.y = lerp(scale.y, s, 0.3)
 
     # wiggle + spring-like float
     global_position = lerp(previous_global_position, get_parent().global_position, WEIGHT)
