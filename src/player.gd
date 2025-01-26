@@ -18,6 +18,8 @@ const HEAL_DELAY = 15.0
 
 # Flag to track if the jump button is being held
 var jump_held = false
+@onready var initial_scale = $Sprite2D.scale
+var last_velocity_x_direction = 1.
 
 func _ready() -> void:
     health_bar.update_health_bar()
@@ -94,7 +96,11 @@ func _physics_process(delta: float) -> void:
     # Update animation
     if velocity.x == 0:
         $Sprite2D/AnimationPlayer.stop()
-    elif not $Sprite2D/AnimationPlayer.is_playing():
-        $Sprite2D/AnimationPlayer.play("Walk")
+    else:
+        last_velocity_x_direction = velocity.x
+        if not $Sprite2D/AnimationPlayer.is_playing():
+            $Sprite2D/AnimationPlayer.play("Walk")
+    var dst_scale = -initial_scale.x if last_velocity_x_direction < 0 else initial_scale.x
+    $Sprite2D.scale.x = lerp($Sprite2D.scale.x, dst_scale, 0.3)
 
     move_and_slide()
