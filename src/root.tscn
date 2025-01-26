@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ohk7l4y4iuct"]
+[gd_scene load_steps=10 format=3 uid="uid://ohk7l4y4iuct"]
 
 [ext_resource type="Script" path="res://src/root.gd" id="1_k6dmd"]
 [ext_resource type="Texture2D" uid="uid://jhmwsl72hrsi" path="res://img/bg_00.png" id="2_rkh7e"]
-[ext_resource type="Texture2D" uid="uid://ohw4f1s6kliy" path="res://img/ground.png" id="3_qnm42"]
-[ext_resource type="Texture2D" uid="uid://bmon4t7gprfel" path="res://img/clouds_1.png" id="4_5o48m"]
-[ext_resource type="Texture2D" uid="uid://dg8fkxllnm6xl" path="res://img/clouds_2.png" id="5_bdln1"]
+[ext_resource type="Texture2D" uid="uid://6hsqt6ocgbfn" path="res://img/Domestos.png" id="3_lddut"]
+[ext_resource type="Texture2D" uid="uid://b7n8y466lxhay" path="res://img/Pralka.png" id="3_puiwv"]
+[ext_resource type="Texture2D" uid="uid://dp0koxcmyokdw" path="res://img/Przepychacz.png" id="4_i7qb4"]
+[ext_resource type="Texture2D" uid="uid://c4cx67htb1lw4" path="res://img/szczota.png" id="5_b6l34"]
+[ext_resource type="Texture2D" uid="uid://ctti373x7p057" path="res://img/zlew.png" id="6_eh17m"]
 [ext_resource type="Script" path="res://src/camera.gd" id="6_isuwo"]
+[ext_resource type="Texture2D" uid="uid://iw7xoiw0volc" path="res://img/Kibel.png" id="6_sm71m"]
 
 [node name="Root" type="Node2D"]
 position = Vector2(574, 326)
@@ -15,41 +18,62 @@ script = ExtResource("1_k6dmd")
 
 [node name="LayerTiles" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_repeat = 3
+motion_scale = Vector2(0.6, 1)
 motion_mirroring = Vector2(1140, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/LayerTiles"]
-position = Vector2(601, 229.335)
-scale = Vector2(0.29679, 0.41368)
+position = Vector2(601, 301)
+scale = Vector2(0.596875, 0.5769)
 texture = ExtResource("2_rkh7e")
 
-[node name="LayerGround" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_scale = Vector2(0.3, 0.3)
+[node name="domestos" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1140, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/LayerGround"]
-position = Vector2(578.667, 326)
-scale = Vector2(0.603704, 0.603704)
-texture = ExtResource("3_qnm42")
-
-[node name="LayerCloud1" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_scale = Vector2(0.6, 0.6)
-motion_mirroring = Vector2(1140, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/LayerCloud1"]
-position = Vector2(576, 324.5)
-scale = Vector2(0.593518, 0.593518)
-texture = ExtResource("4_5o48m")
-
-[node name="LayerCloud2" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_mirroring = Vector2(1140, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/LayerCloud2"]
-position = Vector2(362.667, 204)
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/domestos"]
+position = Vector2(180.387, 216.369)
 scale = Vector2(0.372222, 0.372222)
-texture = ExtResource("5_bdln1")
+texture = ExtResource("3_lddut")
+
+[node name="Pralka" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1140, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Pralka"]
+position = Vector2(243.853, 426.494)
+scale = Vector2(0.380556, 0.380556)
+texture = ExtResource("3_puiwv")
+
+[node name="przepychacz" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1140, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/przepychacz"]
+position = Vector2(1091, 516)
+scale = Vector2(0.266997, 0.298003)
+texture = ExtResource("4_i7qb4")
+
+[node name="zlew" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1140, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/zlew"]
+position = Vector2(679, 421)
+scale = Vector2(0.372222, 0.372222)
+texture = ExtResource("6_eh17m")
+
+[node name="kibel" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1140, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/kibel"]
+position = Vector2(957, 442)
+scale = Vector2(0.372222, 0.372222)
+texture = ExtResource("6_sm71m")
+
+[node name="szczota" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1140, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/szczota"]
+position = Vector2(340.387, 260.369)
+rotation = 4.54833
+scale = Vector2(0.372222, 0.372222)
+texture = ExtResource("5_b6l34")
 
 [node name="ProjectileContainer" type="Node2D" parent="."]
 
