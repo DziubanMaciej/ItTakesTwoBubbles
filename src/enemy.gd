@@ -5,11 +5,26 @@ const JUMP_VELOCITY : float = -550.0
 
 var health : float = 100.0
 
+var has_soap := false
+var has_water := false
+
 func _ready():
     pass
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, projectile_type : Projectile.ProjectileType) -> void:
     health -= 10.0
+
+    match projectile_type:
+        Projectile.ProjectileType.PlayerSoap:
+            $SoapEffect/Timer.stop()
+            $SoapEffect/Timer.start()
+            has_soap = true
+            $SoapEffect.visible = true
+        Projectile.ProjectileType.PlayerWater:
+            $WaterEffect/Timer.stop()
+            $WaterEffect/Timer.start()
+            has_water = true
+            $WaterEffect.visible = true
 
 func _physics_process(delta):
     if not is_on_floor():
@@ -42,3 +57,13 @@ func _physics_process(delta):
     #$Sprite.scale.x = clamp(direction.x, -1, 1)
 
     move_and_slide()
+
+
+func on_soap_end() -> void:
+    has_soap = false
+    $SoapEffect.visible = false
+
+
+func on_water_end() -> void:
+    has_water = false
+    $WaterEffect.visible = false

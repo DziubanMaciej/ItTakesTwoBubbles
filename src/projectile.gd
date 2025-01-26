@@ -72,7 +72,7 @@ func _on_collider_area_entered(area: Area2D) -> void:
 
     # This is a sketchy way to get to the enemy script, but whatever.
     var enemy = area.get_node("..")
-    enemy.take_damage(1)
+    enemy.take_damage(1, projectile_type)
 
 # New function to handle bouncing logic
 func handle_bounce():
