@@ -17,8 +17,8 @@ func setup_health_bar() -> void:
         health_bar.max_value = max_health
         health_bar.value = current_health
         health_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-        health_bar.custom_minimum_size = Vector2(200, 20) 
-        health_bar.percent_visible = false 
+        health_bar.custom_minimum_size = Vector2(200, 20)
+        health_bar.percent_visible = false
         add_child(health_bar)
 
 func update_health_bar() -> void:

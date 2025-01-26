@@ -91,4 +91,10 @@ func _physics_process(delta: float) -> void:
     if Input.is_action_just_pressed(action_fire):
         $GunMarker/Gun.shoot()
 
+    # Update animation
+    if velocity.x == 0:
+        $Sprite2D/AnimationPlayer.stop()
+    elif not $Sprite2D/AnimationPlayer.is_playing():
+        $Sprite2D/AnimationPlayer.play("Walk")
+
     move_and_slide()

@@ -30,13 +30,13 @@ player_index = 1
 
 [node name="Enemy" parent="." instance=ExtResource("3_yoood")]
 position = Vector2(1086, 421)
-ai_type = 1
-model = 1
+collision_layer = 2
+collision_mask = 16
 
 [node name="Enemy2" parent="." instance=ExtResource("3_yoood")]
 position = Vector2(1853, 544)
-shoot_type = 2
-ai_type = 1
+collision_layer = 2
+collision_mask = 16
 
 [node name="Win" parent="." instance=ExtResource("4_5hmd8")]
 position = Vector2(2705, -67)
