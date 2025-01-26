@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8fbenmi0djt0"]
+[gd_scene load_steps=2 format=3 uid="uid://mqxffdrpghdb"]
 
 [ext_resource type="Script" path="res://src/health_bar.gd" id="1_pyma4"]
 
@@ -6,3 +6,6 @@
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_pyma4")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 2
