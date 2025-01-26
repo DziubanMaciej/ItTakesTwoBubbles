@@ -3,8 +3,13 @@ extends CharacterBody2D
 const SPEED : float = 300.0
 const JUMP_VELOCITY : float = -550.0
 
+var health : float = 100.0
+
 func _ready():
     pass
+
+func take_damage(amount: int) -> void:
+    health -= 10.0
 
 func _physics_process(delta):
     if not is_on_floor():
@@ -28,6 +33,10 @@ func _physics_process(delta):
                 direction = Vector2.ZERO
 
     velocity.x = direction.x * SPEED
+
+    if health <= 0.0:
+        print("{} died!" % [self])
+        queue_free()
 
     # TODO(milliewaly): Looks cool!
     #$Sprite.scale.x = clamp(direction.x, -1, 1)
