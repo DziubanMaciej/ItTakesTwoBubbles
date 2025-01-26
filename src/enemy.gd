@@ -20,7 +20,7 @@ func _physics_process(delta):
 
     var distance : float = INF
     var direction : Vector2 = Vector2.ZERO
- 
+
     for p in LevelGlobals.players:
         var d : float = global_position.distance_to(p.global_position)
 
