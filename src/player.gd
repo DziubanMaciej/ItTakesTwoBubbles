@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
+<<<<<<< HEAD
 const JUMP_VELOCITY = -550.0
 const FORCE_DOWN_VELOCITY = 890.0
+=======
+const JUMP_VELOCITY = -750.0
+>>>>>>> dbc2ada (Proper collisions inbetween _the_ players and _the_ enemies)
 const DEFAULT_MAX_HEALTH = 5
 const HEAL_DELAY = 15.0
 

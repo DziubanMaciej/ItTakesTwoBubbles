@@ -1,7 +1,10 @@
 extends Node
 
 const TILE_SIZE : int = 64
-var projectile_container : Node2D = null
-var players : Array = Array()
-var camera : Camera2D = null
+const PLAYER_COLLISION_LAYER : int = 2
+const ENEMY_COLLISION_LAYER : int = 3
+
 var root : Root = null
+var camera : Camera2D = null
+var players : Array = Array()
+var projectile_container : Node2D = null

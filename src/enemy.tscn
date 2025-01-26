@@ -10,8 +10,8 @@ size = Vector2(62, 62)
 size = Vector2(62, 62)
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 16
+collision_layer = 4
+collision_mask = 18
 script = ExtResource("1_ja4ly")
 
 [node name="Sprite" type="Sprite2D" parent="."]

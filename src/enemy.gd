@@ -30,7 +30,7 @@ func _physics_process(delta):
             if distance < LevelGlobals.TILE_SIZE * 10:
                 direction = (p.global_position - global_position).normalized()
             else:
-                direction = Vector2.ZERO  # Reset direction if out of range.
+                direction = Vector2.ZERO
 
         print("%s -> %.2f, %s" % [p, d, direction])
 
@@ -38,6 +38,6 @@ func _physics_process(delta):
     velocity.x = direction.x * SPEED
 
     # Optional: Flip sprite based on direction.
-    # $Sprite.scale.x = clamp(direction.x, -1, 1)
+    #$Sprite.scale.x = clamp(direction.x, -1, 1)
 
     move_and_slide()
