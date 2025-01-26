@@ -13,7 +13,7 @@ size = Vector2(64, 64)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 48
+collision_mask = 52
 script = ExtResource("1_a45wv")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_mftkb")]
